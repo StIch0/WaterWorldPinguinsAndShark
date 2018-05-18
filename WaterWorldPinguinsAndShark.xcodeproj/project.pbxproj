@@ -13,6 +13,17 @@
 		770ACA0620ADCAA00007FD1D /* WaterWorldPinguinsAndShark.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 770ACA0420ADCAA00007FD1D /* WaterWorldPinguinsAndShark.xcdatamodeld */; };
 		770ACA0820ADCAA00007FD1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 770ACA0720ADCAA00007FD1D /* Assets.xcassets */; };
 		770ACA0B20ADCAA00007FD1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770ACA0920ADCAA00007FD1D /* LaunchScreen.storyboard */; };
+		770ACA1320ADCAB30007FD1D /* Animals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770ACA1220ADCAB30007FD1D /* Animals.swift */; };
+		770ACA1520ADCAC30007FD1D /* Pinguins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770ACA1420ADCAC30007FD1D /* Pinguins.swift */; };
+		770ACA1720ADCACA0007FD1D /* Shark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770ACA1620ADCACA0007FD1D /* Shark.swift */; };
+		770ACA1A20ADCB340007FD1D /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770ACA1920ADCB340007FD1D /* Direction.swift */; };
+		770ACA1C20ADCB5A0007FD1D /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770ACA1B20ADCB5A0007FD1D /* Position.swift */; };
+		770ACA1E20ADCD380007FD1D /* AnimalsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770ACA1D20ADCD380007FD1D /* AnimalsManager.swift */; };
+		770ACA2020ADCFEC0007FD1D /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770ACA1F20ADCFEC0007FD1D /* StartViewController.swift */; };
+		770ACA2220ADD0E90007FD1D /* StartViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770ACA2120ADD0E90007FD1D /* StartViewControllerCell.swift */; };
+		770ACA2420ADD1710007FD1D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770ACA2320ADD1710007FD1D /* Extension.swift */; };
+		770ACA2620ADD1C30007FD1D /* StartViewControllerCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770ACA2520ADD1C30007FD1D /* StartViewControllerCellViewModel.swift */; };
+		770ACA2820ADD2B10007FD1D /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770ACA2720ADD2B10007FD1D /* StartViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +35,17 @@
 		770ACA0720ADCAA00007FD1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		770ACA0A20ADCAA00007FD1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		770ACA0C20ADCAA00007FD1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		770ACA1220ADCAB30007FD1D /* Animals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animals.swift; sourceTree = "<group>"; };
+		770ACA1420ADCAC30007FD1D /* Pinguins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pinguins.swift; sourceTree = "<group>"; };
+		770ACA1620ADCACA0007FD1D /* Shark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shark.swift; sourceTree = "<group>"; };
+		770ACA1920ADCB340007FD1D /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		770ACA1B20ADCB5A0007FD1D /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		770ACA1D20ADCD380007FD1D /* AnimalsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalsManager.swift; sourceTree = "<group>"; };
+		770ACA1F20ADCFEC0007FD1D /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		770ACA2120ADD0E90007FD1D /* StartViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewControllerCell.swift; sourceTree = "<group>"; };
+		770ACA2320ADD1710007FD1D /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		770ACA2520ADD1C30007FD1D /* StartViewControllerCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewControllerCellViewModel.swift; sourceTree = "<group>"; };
+		770ACA2720ADD2B10007FD1D /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +80,13 @@
 			children = (
 				770AC9FD20ADCAA00007FD1D /* AppDelegate.swift */,
 				770AC9FF20ADCAA00007FD1D /* ViewController.swift */,
+				770ACA1F20ADCFEC0007FD1D /* StartViewController.swift */,
+				770ACA2320ADD1710007FD1D /* Extension.swift */,
+				770ACA2120ADD0E90007FD1D /* StartViewControllerCell.swift */,
+				770ACA2720ADD2B10007FD1D /* StartViewModel.swift */,
+				770ACA2520ADD1C30007FD1D /* StartViewControllerCellViewModel.swift */,
+				770ACA1D20ADCD380007FD1D /* AnimalsManager.swift */,
+				770ACA1820ADCAD20007FD1D /* Models */,
 				770ACA0120ADCAA00007FD1D /* Main.storyboard */,
 				770ACA0720ADCAA00007FD1D /* Assets.xcassets */,
 				770ACA0920ADCAA00007FD1D /* LaunchScreen.storyboard */,
@@ -65,6 +94,18 @@
 				770ACA0420ADCAA00007FD1D /* WaterWorldPinguinsAndShark.xcdatamodeld */,
 			);
 			path = WaterWorldPinguinsAndShark;
+			sourceTree = "<group>";
+		};
+		770ACA1820ADCAD20007FD1D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				770ACA1220ADCAB30007FD1D /* Animals.swift */,
+				770ACA1420ADCAC30007FD1D /* Pinguins.swift */,
+				770ACA1620ADCACA0007FD1D /* Shark.swift */,
+				770ACA1920ADCB340007FD1D /* Direction.swift */,
+				770ACA1B20ADCB5A0007FD1D /* Position.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,8 +180,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				770ACA1A20ADCB340007FD1D /* Direction.swift in Sources */,
 				770ACA0020ADCAA00007FD1D /* ViewController.swift in Sources */,
+				770ACA1720ADCACA0007FD1D /* Shark.swift in Sources */,
+				770ACA2420ADD1710007FD1D /* Extension.swift in Sources */,
+				770ACA1320ADCAB30007FD1D /* Animals.swift in Sources */,
+				770ACA1520ADCAC30007FD1D /* Pinguins.swift in Sources */,
+				770ACA2220ADD0E90007FD1D /* StartViewControllerCell.swift in Sources */,
+				770ACA2820ADD2B10007FD1D /* StartViewModel.swift in Sources */,
+				770ACA2020ADCFEC0007FD1D /* StartViewController.swift in Sources */,
+				770ACA1E20ADCD380007FD1D /* AnimalsManager.swift in Sources */,
 				770AC9FE20ADCAA00007FD1D /* AppDelegate.swift in Sources */,
+				770ACA2620ADD1C30007FD1D /* StartViewControllerCellViewModel.swift in Sources */,
+				770ACA1C20ADCB5A0007FD1D /* Position.swift in Sources */,
 				770ACA0620ADCAA00007FD1D /* WaterWorldPinguinsAndShark.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

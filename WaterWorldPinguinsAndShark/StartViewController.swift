@@ -12,6 +12,7 @@ class StartViewController: UICollectionViewController, UICollectionViewDelegateF
     var tap : Bool = false
     let cellId  : String = "cellId"
     var viewModel : StartViewModel!
+    var activityIndicator : UIActivityIndicatorView!
     var restartButton : UIButton! =  {
         var button = UIButton()
         button.setTitle("Resart", for: .normal)
@@ -25,11 +26,15 @@ class StartViewController: UICollectionViewController, UICollectionViewDelegateF
         setUpView()
         collectionView?.register(StartViewControllerCell.self, forCellWithReuseIdentifier: cellId)
         viewModel = StartViewModel(animalsManager: AnimalsManager())
+        activityIndicator.startAnimating()
         viewModel.updateData {
             self.collectionView?.reloadData()
+            self.activityIndicator.stopAnimating()
+            
         }
         tapOnScreen()
     }
+
     func tapOnScreen (){
         let tap = UITapGestureRecognizer(target: self, action: #selector(chooseDirectionAndMakeStep))
         tap.numberOfTouchesRequired = 1
@@ -37,20 +42,31 @@ class StartViewController: UICollectionViewController, UICollectionViewDelegateF
     }
     @objc func chooseDirectionAndMakeStep (){
         tap = true
-        viewModel.op()
+        self.viewModel.runStep()
         self.collectionView?.reloadData()
-    
         print("Tap")
     }
     func setUpView (){
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityIndicator.hidesWhenStopped = true
         view?.addSubview(restartButton)
+        view?.addSubview(activityIndicator)
         restartButton.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
         collectionView?.backgroundColor = .white
         collectionView?.isPagingEnabled = true
-        restartButton.bottomAnchor.constraint(equalTo: (view?.bottomAnchor)!).isActive = true
-        restartButton.leadingAnchor.constraint(equalTo: (view?.leadingAnchor)!).isActive = true
-        restartButton.trailingAnchor.constraint(equalTo: (view?.trailingAnchor)!).isActive = true
-        restartButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            restartButton.bottomAnchor.constraint(equalTo: (view?.bottomAnchor)!),
+            restartButton.leadingAnchor.constraint(equalTo: (view?.leadingAnchor)!),
+            restartButton.trailingAnchor.constraint(equalTo: (view?.trailingAnchor)!),
+            restartButton.heightAnchor.constraint(equalToConstant: 50),
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            ])
+        print(collectionView?.frame.height, view?.frame.height)
+
     }
     @objc func restartView(){
         viewModel.updateData {

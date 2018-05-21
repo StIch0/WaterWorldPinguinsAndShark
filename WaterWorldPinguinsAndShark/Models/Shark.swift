@@ -9,14 +9,12 @@
 import Foundation
 import  UIKit
 class Shark : Animals {
-//    var direction : Direction!
-//    var color : UIColor!
-//    var life : Int = 0
-//    var position : Position!
-//    var title : String!
-//    var maxLife : Int!
-//    var stepToEat : Int!
-   override init(direction: Direction, color: UIColor, life: Int, position: Position, title: String, maxLife: Int, stepToEat: Int) {
-        super.init(direction: direction, color: .red, life: life, position: position, title: "Shark", maxLife: maxLife, stepToEat: stepToEat)
+    var isFull : Bool = false
+    var stepToEat : Int = 0
+    init(direction: Direction, color: UIColor, life: Int, position: Position, title: String, maxLife: Int, isFull : Bool, stepToEat: Int) {
+        super.init(direction: direction, color: .red, life: life, position: position, title: "Shark", maxLife: maxLife)
+        self.isFull = isFull
+        self.stepToEat = stepToEat
+
     }
 }

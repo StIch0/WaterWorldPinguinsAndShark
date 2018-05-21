@@ -15,14 +15,22 @@ class Animals {
     var position : Position
     var title : String
     var maxLife : Int
-    var stepToEat : Int
-    init (direction : Direction, color : UIColor, life : Int, position : Position, title : String, maxLife : Int, stepToEat : Int){
+    
+    init (direction : Direction, color : UIColor, life : Int, position : Position, title : String, maxLife : Int){
         self.direction = direction
         self.color = color
         self.life = life
         self.position = position
         self.title = title
         self.maxLife = maxLife
-        self.stepToEat = stepToEat
+    }
+    
+    init (animal: Animals){
+        self.direction = animal.direction
+        self.color = animal.color
+        self.life = animal.life
+        self.position = animal.position
+        self.title = animal.title
+        self.maxLife = animal.maxLife
     }
 }

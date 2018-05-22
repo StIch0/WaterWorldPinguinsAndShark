@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 class Penguins : Animals {
-    override init(direction: Direction, color: UIColor, life: Int, position: Position, title: String, maxLife: Int) {
-        super.init(direction: direction, color: .blue, life: life, position: position, title: title, maxLife: maxLife)
+    override init(direction: Direction, photo: UIImage, life: Int, position: Position, title: String, maxLife: Int) {
+        super.init(direction: direction, photo: photo, life: life, position: position, title: title, maxLife: maxLife)
     }
 }

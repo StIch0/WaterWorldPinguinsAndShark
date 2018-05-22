@@ -78,20 +78,11 @@
 		770AC9FC20ADCAA00007FD1D /* WaterWorldPinguinsAndShark */ = {
 			isa = PBXGroup;
 			children = (
-				770AC9FD20ADCAA00007FD1D /* AppDelegate.swift */,
-				770AC9FF20ADCAA00007FD1D /* ViewController.swift */,
-				770ACA1F20ADCFEC0007FD1D /* StartViewController.swift */,
-				770ACA2320ADD1710007FD1D /* Extension.swift */,
-				770ACA2120ADD0E90007FD1D /* StartViewControllerCell.swift */,
-				770ACA2720ADD2B10007FD1D /* StartViewModel.swift */,
-				770ACA2520ADD1C30007FD1D /* StartViewControllerCellViewModel.swift */,
-				770ACA1D20ADCD380007FD1D /* AnimalsManager.swift */,
+				773A7B0F20B451C700B5DE40 /* Tools */,
+				773A7B1020B451E800B5DE40 /* ViewController+Ext+Cell */,
+				773A7B1220B4520D00B5DE40 /* ViewModel */,
+				773A7B1120B4520000B5DE40 /* Managers */,
 				770ACA1820ADCAD20007FD1D /* Models */,
-				770ACA0120ADCAA00007FD1D /* Main.storyboard */,
-				770ACA0720ADCAA00007FD1D /* Assets.xcassets */,
-				770ACA0920ADCAA00007FD1D /* LaunchScreen.storyboard */,
-				770ACA0C20ADCAA00007FD1D /* Info.plist */,
-				770ACA0420ADCAA00007FD1D /* WaterWorldPinguinsAndShark.xcdatamodeld */,
 			);
 			path = WaterWorldPinguinsAndShark;
 			sourceTree = "<group>";
@@ -106,6 +97,47 @@
 				770ACA1B20ADCB5A0007FD1D /* Position.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		773A7B0F20B451C700B5DE40 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				770ACA0120ADCAA00007FD1D /* Main.storyboard */,
+				770ACA0720ADCAA00007FD1D /* Assets.xcassets */,
+				770ACA0920ADCAA00007FD1D /* LaunchScreen.storyboard */,
+				770ACA0C20ADCAA00007FD1D /* Info.plist */,
+				770ACA0420ADCAA00007FD1D /* WaterWorldPinguinsAndShark.xcdatamodeld */,
+				770AC9FD20ADCAA00007FD1D /* AppDelegate.swift */,
+				770AC9FF20ADCAA00007FD1D /* ViewController.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		773A7B1020B451E800B5DE40 /* ViewController+Ext+Cell */ = {
+			isa = PBXGroup;
+			children = (
+				770ACA1F20ADCFEC0007FD1D /* StartViewController.swift */,
+				770ACA2120ADD0E90007FD1D /* StartViewControllerCell.swift */,
+				770ACA2320ADD1710007FD1D /* Extension.swift */,
+			);
+			path = "ViewController+Ext+Cell";
+			sourceTree = "<group>";
+		};
+		773A7B1120B4520000B5DE40 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				770ACA1D20ADCD380007FD1D /* AnimalsManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		773A7B1220B4520D00B5DE40 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				770ACA2720ADD2B10007FD1D /* StartViewModel.swift */,
+				770ACA2520ADD1C30007FD1D /* StartViewControllerCellViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,6 +365,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6R6KJ6QT78;
 				INFOPLIST_FILE = WaterWorldPinguinsAndShark/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pavelburdukovskii.WaterWorldPinguinsAndShark;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -348,6 +381,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6R6KJ6QT78;
 				INFOPLIST_FILE = WaterWorldPinguinsAndShark/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pavelburdukovskii.WaterWorldPinguinsAndShark;
 				PRODUCT_NAME = "$(TARGET_NAME)";

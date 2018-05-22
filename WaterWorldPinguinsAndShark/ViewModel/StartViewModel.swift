@@ -53,14 +53,13 @@ class StartViewModel {
             let findPlace = findTheObject(animal: animal, title : "None")
             if findPlace.0 {
                 if animal.title == "Shark"{
-                    animals[10 * findPlace.1 + findPlace.2] = Shark(direction: .None, color: .red, life: 0, position: Position(x: findPlace.2, y: findPlace.2), title: "Shark", maxLife: 8, isFull: false, stepToEat: 3)
+                    animals[10 * findPlace.1 + findPlace.2] = Shark(direction: .None, photo: #imageLiteral(resourceName: "shark"), life: 0, position: Position(x: findPlace.2, y: findPlace.2), title: "Shark", maxLife: 8, isFull: false, stepToEat: 3)
                     animal.life = 0
                 }
                 else if animal.title == "Penguins"{
-                    animals[10 * findPlace.1 + findPlace.2] = Penguins(direction: .None, color: .blue, life: 3, position: Position(x: findPlace.2, y: findPlace.2), title: "Penguins", maxLife: 3)
+                    animals[10 * findPlace.1 + findPlace.2] = Penguins(direction: .None, photo: #imageLiteral(resourceName: "penguin"), life: 3, position: Position(x: findPlace.2, y: findPlace.2), title: "Penguins", maxLife: 3)
                     animal.life = 0
                 }
-//                animals[10 * findPlace.1 + findPlace.2] = Animals(direction: .None, color: animal.color, life: 0, position: Position(x: findPlace.1, y: findPlace.2), title: animal.title, maxLife: animal.maxLife, stepToEat: animal.stepToEat)
                 
         }
     }
@@ -68,12 +67,11 @@ class StartViewModel {
     
     private func dead(animal : Shark){
          if !(animal.isFull){
-            animals[10 * animal.position.x + animal.position.y].color = .lightGray
+            animals[10 * animal.position.x + animal.position.y].photo = #imageLiteral(resourceName: "sea")
             animals[10 * animal.position.x + animal.position.y].title = "None"
             animals[10 * animal.position.x + animal.position.y].life = 0
             animals[10 * animal.position.x + animal.position.y].direction = .None
             animals[10 * animal.position.x + animal.position.y].maxLife = 0
-//            animals[10 * animal.position.x + animal.position.y].stepToEat = 0
             
          }else {
             animal.isFull = false
@@ -101,25 +99,17 @@ class StartViewModel {
         if checkPosition(x: newX, y: newY) && animals[10 * newX + newY].title == "None" {
             
             if animal.title == "Shark"{
-                animals[10 * newX + newY] = Shark(direction: animal.direction, color: animal.color, life: animal.life + 1, position: Position(x : newX, y: newY), title: animal.title, maxLife: 8, isFull: (animal as! Shark).isFull, stepToEat: (animal as! Shark).stepToEat)
+                animals[10 * newX + newY] = Shark(direction: animal.direction, photo: animal.photo, life: animal.life + 1, position: Position(x : newX, y: newY), title: animal.title, maxLife: 8, isFull: (animal as! Shark).isFull, stepToEat: (animal as! Shark).stepToEat)
             }else
                 if animal.title == "Penguins"{
-                 animals[10 * newX + newY] = Penguins(direction: animal.direction, color: animal.color, life: animal.life + 1, position: Position(x : newX, y: newY), title: animal.title, maxLife: 3)
+                 animals[10 * newX + newY] = Penguins(direction: animal.direction, photo: animal.photo, life: animal.life + 1, position: Position(x : newX, y: newY), title: animal.title, maxLife: 3)
             }
-//
-            
-            //Remake
-//            animal.life += 1
-//            animal.position = Position(x: newX, y: newY)
-//            animals[10 * newX + newY] = Animals(animal: animal)
-            
-//            print("animal = ", animal.life, animal.title)
+
             animals[10 * oldX + oldY].title = "None"
-            animals[10 * oldX + oldY].color = .lightGray
+            animals[10 * oldX + oldY].photo = #imageLiteral(resourceName: "sea")
             animals[10 * oldX + oldY].life = 0
             animals[10 * oldX + oldY].direction = .None
             animals[10 * oldX + oldY].maxLife = 0
-         //   animals[10 * oldX + oldY].stepToEat = 0
             
         }
         else {
@@ -133,25 +123,18 @@ class StartViewModel {
             if check.0 {
                 self.animals[check.1*10 + check.2] = Shark(
                     direction: animal.direction,
-                    color: animal.color,
+                    photo: animal.photo,
                     life: animal.life + 1,
                     position: Position(x: check.1, y: check.2),
                     title: animal.title,
                     maxLife: 8,
                     isFull: true,
                     stepToEat: 3)
-                // self.animals[check.1*10 + check.2] = Animals(animal: animal)
-                // self.animals[check.1*10 + check.2].position = Position(x: check.1, y: check.2)
-                
-                
-                
                 self.animals[animal.position.x*10 + animal.position.y].title = "None"
-                self.animals[animal.position.x*10 + animal.position.y].color = .lightGray
+                self.animals[animal.position.x*10 + animal.position.y].photo = #imageLiteral(resourceName: "sea")
                 self.animals[animal.position.x*10 + animal.position.y].life = 0
                 self.animals[animal.position.x*10 + animal.position.y].direction = .None
                 self.animals[animal.position.x*10 + animal.position.y].maxLife = 0
-             // self.animals[animal.position.x*10 + animal.position.y].stepToEat = 0
-             // animals[animal.position.x*10 + animal.position.y].position = Position(x: animal.position.x, y: animal.position.y)
             }
             else {
                 self.makeStep(animal)
@@ -195,26 +178,6 @@ class StartViewModel {
         }
     }
     func runStep(){
-
-        var kk : Int = 0
-        for animal in animals {
-            if animal.title == "Shark" {
-                kk += 1;
-            }
-        }
-        var kkk : Int = 0
-        for animal in animals {
-            if animal.title == "Penguins" {
-                kkk += 1;
-            }
-        }
-        var kkkk : Int = 0
-        for animal in animals {
-            if animal.title == "None" {
-                kkkk += 1;
-            }
-        }
-        print ("kkkkkkkk", kk, kkk,kkkk, kk + kkk + kkkk)
         
         cellsArray.removeAll()
         move(animals: animals)

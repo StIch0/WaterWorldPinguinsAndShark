@@ -10,15 +10,15 @@ import Foundation
 import  UIKit
 class Animals {
     var direction : Direction
-    var color : UIColor
+    var photo : UIImage
     var life : Int
     var position : Position
     var title : String
     var maxLife : Int
     
-    init (direction : Direction, color : UIColor, life : Int, position : Position, title : String, maxLife : Int){
+    init (direction : Direction, photo : UIImage, life : Int, position : Position, title : String, maxLife : Int){
         self.direction = direction
-        self.color = color
+        self.photo = photo
         self.life = life
         self.position = position
         self.title = title
@@ -27,7 +27,7 @@ class Animals {
     
     init (animal: Animals){
         self.direction = animal.direction
-        self.color = animal.color
+        self.photo = animal.photo
         self.life = animal.life
         self.position = animal.position
         self.title = animal.title

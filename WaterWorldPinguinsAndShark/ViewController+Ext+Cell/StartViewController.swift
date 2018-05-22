@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 class StartViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    var tap : Bool = false
     let cellId  : String = "cellId"
     var viewModel : StartViewModel!
     var activityIndicator : UIActivityIndicatorView!
@@ -23,7 +22,15 @@ class StartViewController: UICollectionViewController, UICollectionViewDelegateF
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpView()
+        if #available(iOS 9.0, *) {
+            setUpView()
+        } else {
+            if #available(iOS 10.0, *) {
+                setUpView()
+            } else {
+                // Fallback on earlier versions
+            }
+        }
         collectionView?.register(StartViewControllerCell.self, forCellWithReuseIdentifier: cellId)
         viewModel = StartViewModel(animalsManager: AnimalsManager())
         activityIndicator.startAnimating()
@@ -41,11 +48,12 @@ class StartViewController: UICollectionViewController, UICollectionViewDelegateF
         view.addGestureRecognizer(tap)
     }
     @objc func chooseDirectionAndMakeStep (){
-        tap = true
-        self.viewModel.runStep()
-        self.collectionView?.reloadData()
-        print("Tap")
+        activityIndicator.startAnimating()
+            self.viewModel.runStep()
+            self.collectionView?.reloadData()
+            self.activityIndicator.stopAnimating()
     }
+    @available(iOS 9.0, *)
     func setUpView (){
         activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         activityIndicator.hidesWhenStopped = true

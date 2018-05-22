@@ -18,7 +18,7 @@ class StartViewController: UICollectionViewController, UICollectionViewDelegateF
         button.setTitle("Resart", for: .normal)
         button.addTarget(self, action: #selector(restartView), for: .touchDown)
         button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .white
+        button.backgroundColor = .lightGray
         return button
     }()
     override func viewDidLoad() {
@@ -65,7 +65,6 @@ class StartViewController: UICollectionViewController, UICollectionViewDelegateF
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
             ])
-        print(collectionView?.frame.height, view?.frame.height)
 
     }
     @objc func restartView(){

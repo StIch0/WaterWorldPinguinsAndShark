@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 extension StartViewController {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/11, height: (collectionView.frame.height )/19)
+        print("\((collectionView.frame.width)) \((collectionView.frame.height))")
+        return CGSize(width: collectionView.frame.width/11, height: (collectionView.frame.height - 58)/17)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 2.0

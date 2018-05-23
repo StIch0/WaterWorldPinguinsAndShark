@@ -14,7 +14,7 @@ class StartViewControllerCell : UICollectionViewCell  {
             picture.image = viewModel.photo
         }
     }
-    var picture : UIImageView!
+    private var picture : UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
     }

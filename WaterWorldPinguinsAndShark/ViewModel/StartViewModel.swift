@@ -74,7 +74,6 @@ class StartViewModel {
     }
     //make step in chosen direction
     private func makeStep(_ animal : Animals){
-//        print(" \(animal.position.x * 10 + animal.position.y)")
         if animal.life == animal.maxLife {
             reproduction(animal: animal)
             animal.life = 0
@@ -114,7 +113,6 @@ class StartViewModel {
     }
     
    private  func eat(animal : Animals){
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             let check = self.findTheObject(animal: animal, title: "Penguins")
             if check.0 {
                 self.animals[check.1 * 10 + check.2] = Shark(
@@ -138,7 +136,6 @@ class StartViewModel {
             else {
                 self.makeStep(animal)
             }
-        })
     }
     private func chooseDirection(dir : Direction)->(Int,Int){
         var newX : Int  = 0
@@ -168,7 +165,10 @@ class StartViewModel {
         for animal in animals {
             if animal.title != "None"{
                 if animal.title == "Shark"{
-                    eat(animal: animal)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: {
+                        self.eat(animal: animal)
+                    })
+                    
                 }else {
                     makeStep(animal)
                 }
@@ -181,6 +181,7 @@ class StartViewModel {
         for animal in animals{
             cellsArray.append(StartViewControllerCellViewModel(animal: animal))
         }
+    
     }
     func numberOfAnimals ()->Int{
         return cellsArray.count

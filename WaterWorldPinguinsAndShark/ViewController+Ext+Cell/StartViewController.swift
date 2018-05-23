@@ -15,9 +15,9 @@ class StartViewController: UICollectionViewController, UICollectionViewDelegateF
     var restartButton : UIButton! =  {
         var button = UIButton()
         button.setTitle("Resart", for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(restartView), for: .touchDown)
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .lightGray
+        button.backgroundColor = .gray
         return button
     }()
     override func viewDidLoad() {
@@ -34,8 +34,8 @@ class StartViewController: UICollectionViewController, UICollectionViewDelegateF
         viewModel = StartViewModel(animalsManager: AnimalsManager())
         activityIndicator.startAnimating()
         viewModel.updateData {
-            self.activityIndicator.stopAnimating()
             self.collectionView?.reloadData()
+            self.activityIndicator.stopAnimating()
         }
         tapOnScreen()
     }
@@ -48,12 +48,11 @@ class StartViewController: UICollectionViewController, UICollectionViewDelegateF
     //action tap
     @objc func chooseDirectionAndMakeStep (){
         activityIndicator.startAnimating()
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.2, execute: {
+//        DispatchQueue.main.async{
             self.viewModel.runStep()
             self.collectionView?.reloadData()
             self.activityIndicator.stopAnimating()
-
-//        })
+//        }
     }
     //set up collectionView and restartButton in current view
     @available(iOS 9.0, *)

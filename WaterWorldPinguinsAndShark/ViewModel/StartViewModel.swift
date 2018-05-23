@@ -1,10 +1,3 @@
-//
-//  StartViewModel.swift
-//  WaterWorldPinguinsAndShark
-//
-//  Created by Pavel Burdukovskii on 17/05/2018.
-//  Copyright © 2018 Pavel Burdukovskii. All rights reserved.
-//
 
 import Foundation
 class StartViewModel {
@@ -81,7 +74,7 @@ class StartViewModel {
     }
     //make step in chosen direction
     private func makeStep(_ animal : Animals){
-        print("\(animal.life), \(animal.maxLife) \(animal.position.x * 10 + animal.position.y)")
+//        print(" \(animal.position.x * 10 + animal.position.y)")
         if animal.life == animal.maxLife {
             reproduction(animal: animal)
             animal.life = 0
@@ -103,10 +96,10 @@ class StartViewModel {
         if checkPosition(x: newX, y: newY) && animals[10 * newX + newY].title == "None" {
             
             if animal.title == "Shark"{
-                animals[10 * newX + newY] = Shark(direction: animal.direction, photo: animal.photo, life: animal.life + 1, position: Position(x : newX, y: newY), title: animal.title, maxLife: 8, isFull: (animal as! Shark).isFull, stepToEat: (animal as! Shark).stepToEat)
+                animals[10 * newX + newY] = Shark(direction: .None, photo: animal.photo, life: animal.life + 1, position: Position(x : newX, y: newY), title: animal.title, maxLife: 8, isFull: (animal as! Shark).isFull, stepToEat: (animal as! Shark).stepToEat)
             }else
                 if animal.title == "Penguins"{
-                 animals[10 * newX + newY] = Penguins(direction: animal.direction, photo: animal.photo, life: animal.life + 1, position: Position(x : newX, y: newY), title: animal.title, maxLife: 3)
+                 animals[10 * newX + newY] = Penguins(direction: .None, photo: animal.photo, life: animal.life + 1, position: Position(x : newX, y: newY), title: animal.title, maxLife: 3)
             }
             let oldCoor = 10 * oldX + oldY
             animals[oldCoor].title = "None"
@@ -114,7 +107,6 @@ class StartViewModel {
             animals[oldCoor].life = 0
             animals[oldCoor].direction = .None
             animals[oldCoor].maxLife = 0
-            
         }
         else {
             animal.life += 1
@@ -122,12 +114,11 @@ class StartViewModel {
     }
     
    private  func eat(animal : Animals){
-        print("\(animal.life), \(animal.maxLife) \(animal.position.x * 10 + animal.position.y)")
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             let check = self.findTheObject(animal: animal, title: "Penguins")
             if check.0 {
-                self.animals[check.1*10 + check.2] = Shark(
-                    direction: animal.direction,
+                self.animals[check.1 * 10 + check.2] = Shark(
+                    direction: .None,
                     photo: animal.photo,
                     life: animal.life + 1,
                     position: Position(x: check.1, y: check.2),
@@ -173,12 +164,11 @@ class StartViewModel {
         }
     }
     
-    private func move (animals  : [Animals]){
+    private func move (){
         for animal in animals {
             if animal.title != "None"{
                 if animal.title == "Shark"{
                     eat(animal: animal)
-                    
                 }else {
                     makeStep(animal)
                 }
@@ -187,7 +177,7 @@ class StartViewModel {
     }
     func runStep(){
         cellsArray.removeAll()
-        move(animals: animals)
+        move()
         for animal in animals{
             cellsArray.append(StartViewControllerCellViewModel(animal: animal))
         }

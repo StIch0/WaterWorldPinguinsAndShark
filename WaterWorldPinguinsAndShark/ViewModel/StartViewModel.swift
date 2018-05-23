@@ -16,6 +16,7 @@ class StartViewModel {
     private var animals : [Animals]!
     private var direction : [Direction]! =
         [.Top, .Down, .Left, .Right, .TopLeft, .TopRight, .DownLeft, .DownRight]
+    // Update data in start and when we tap restart button
     func updateData(complection: @escaping ()->Void ){
         cellsArray.removeAll()
         animalsManager.getAnimals(comletion: {animals in
@@ -26,11 +27,12 @@ class StartViewModel {
             complection()
         })
     }
+    
     private func checkPosition (x : Int, y : Int)->Bool{
         return x >= 0 && y >= 0 && x < 15 && y < 10
     }
 
- 
+    // we find any object (penguin or None) in every direction ang get result x coordinate and y coordinate
     private  func findTheObject (animal : Animals, title: String)->(Bool, Int, Int){
         var result : Bool = false
             for dir in direction {
@@ -49,16 +51,15 @@ class StartViewModel {
             }
         return (false, 0,0)
     }
+    //reproduction animal
     private  func reproduction(animal : Animals){
             let findPlace = findTheObject(animal: animal, title : "None")
             if findPlace.0 {
                 if animal.title == "Shark"{
                     animals[10 * findPlace.1 + findPlace.2] = Shark(direction: .None, photo: #imageLiteral(resourceName: "shark"), life: 0, position: Position(x: findPlace.2, y: findPlace.2), title: "Shark", maxLife: 8, isFull: false, stepToEat: 3)
-                    animal.life = 0
                 }
                 else if animal.title == "Penguins"{
                     animals[10 * findPlace.1 + findPlace.2] = Penguins(direction: .None, photo: #imageLiteral(resourceName: "penguin"), life: 3, position: Position(x: findPlace.2, y: findPlace.2), title: "Penguins", maxLife: 3)
-                    animal.life = 0
                 }
                 
         }
@@ -67,20 +68,23 @@ class StartViewModel {
     
     private func dead(animal : Shark){
          if !(animal.isFull){
-            animals[10 * animal.position.x + animal.position.y].photo = #imageLiteral(resourceName: "sea")
-            animals[10 * animal.position.x + animal.position.y].title = "None"
-            animals[10 * animal.position.x + animal.position.y].life = 0
-            animals[10 * animal.position.x + animal.position.y].direction = .None
-            animals[10 * animal.position.x + animal.position.y].maxLife = 0
+            let oldCoor = animal.position.x*10 + animal.position.y
+            animals[oldCoor].photo = #imageLiteral(resourceName: "sea")
+            animals[oldCoor].title = "None"
+            animals[oldCoor].life = 0
+            animals[oldCoor].direction = .None
+            animals[oldCoor].maxLife = 0
             
          }else {
             animal.isFull = false
         }
     }
+    //make step in chosen direction
     private func makeStep(_ animal : Animals){
-        print("\(animal.life) == \(animal.maxLife) is \(animal.title)")
+        print("\(animal.life), \(animal.maxLife) \(animal.position.x * 10 + animal.position.y)")
         if animal.life == animal.maxLife {
             reproduction(animal: animal)
+            animal.life = 0
             return
         }
         if animal.life % 3 == 0 && animal.life != 0 && animal.title == "Shark"{
@@ -104,12 +108,12 @@ class StartViewModel {
                 if animal.title == "Penguins"{
                  animals[10 * newX + newY] = Penguins(direction: animal.direction, photo: animal.photo, life: animal.life + 1, position: Position(x : newX, y: newY), title: animal.title, maxLife: 3)
             }
-
-            animals[10 * oldX + oldY].title = "None"
-            animals[10 * oldX + oldY].photo = #imageLiteral(resourceName: "sea")
-            animals[10 * oldX + oldY].life = 0
-            animals[10 * oldX + oldY].direction = .None
-            animals[10 * oldX + oldY].maxLife = 0
+            let oldCoor = 10 * oldX + oldY
+            animals[oldCoor].title = "None"
+            animals[oldCoor].photo = #imageLiteral(resourceName: "sea")
+            animals[oldCoor].life = 0
+            animals[oldCoor].direction = .None
+            animals[oldCoor].maxLife = 0
             
         }
         else {
@@ -118,6 +122,7 @@ class StartViewModel {
     }
     
    private  func eat(animal : Animals){
+        print("\(animal.life), \(animal.maxLife) \(animal.position.x * 10 + animal.position.y)")
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             let check = self.findTheObject(animal: animal, title: "Penguins")
             if check.0 {
@@ -130,11 +135,14 @@ class StartViewModel {
                     maxLife: 8,
                     isFull: true,
                     stepToEat: 3)
-                self.animals[animal.position.x*10 + animal.position.y].title = "None"
-                self.animals[animal.position.x*10 + animal.position.y].photo = #imageLiteral(resourceName: "sea")
-                self.animals[animal.position.x*10 + animal.position.y].life = 0
-                self.animals[animal.position.x*10 + animal.position.y].direction = .None
-                self.animals[animal.position.x*10 + animal.position.y].maxLife = 0
+                
+                let oldCoor = animal.position.x*10 + animal.position.y
+                
+                self.animals[oldCoor].title = "None"
+                self.animals[oldCoor].photo = #imageLiteral(resourceName: "sea")
+                self.animals[oldCoor].life = 0
+                self.animals[oldCoor].direction = .None
+                self.animals[oldCoor].maxLife = 0
             }
             else {
                 self.makeStep(animal)
@@ -178,7 +186,6 @@ class StartViewModel {
         }
     }
     func runStep(){
-        
         cellsArray.removeAll()
         move(animals: animals)
         for animal in animals{

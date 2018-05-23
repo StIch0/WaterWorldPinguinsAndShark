@@ -12,12 +12,9 @@ class StartViewControllerCell : UICollectionViewCell  {
    weak var viewModel : StartViewControllerCellViewModel! {
         didSet {
             picture.image = viewModel.photo
-            busy = viewModel.busy
-            accessibilityLabel = viewModel.title
         }
     }
     var picture : UIImageView!
-    var busy : Bool!
     override func awakeFromNib() {
         super.awakeFromNib()
     }

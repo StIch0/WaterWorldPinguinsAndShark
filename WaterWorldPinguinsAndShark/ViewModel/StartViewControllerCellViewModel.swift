@@ -9,11 +9,8 @@
 import Foundation
 import UIKit
 class StartViewControllerCellViewModel {
-    var busy : Bool = false
-    var title : String = ""
     var photo : UIImage!
     required init (animal : Animals){
         photo = animal.photo
-        title = animal.title
     }
 }

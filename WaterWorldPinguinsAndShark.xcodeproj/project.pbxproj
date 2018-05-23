@@ -78,6 +78,7 @@
 		770AC9FC20ADCAA00007FD1D /* WaterWorldPinguinsAndShark */ = {
 			isa = PBXGroup;
 			children = (
+				770ACA0C20ADCAA00007FD1D /* Info.plist */,
 				773A7B0F20B451C700B5DE40 /* Tools */,
 				773A7B1020B451E800B5DE40 /* ViewController+Ext+Cell */,
 				773A7B1220B4520D00B5DE40 /* ViewModel */,
@@ -105,7 +106,6 @@
 				770ACA0120ADCAA00007FD1D /* Main.storyboard */,
 				770ACA0720ADCAA00007FD1D /* Assets.xcassets */,
 				770ACA0920ADCAA00007FD1D /* LaunchScreen.storyboard */,
-				770ACA0C20ADCAA00007FD1D /* Info.plist */,
 				770ACA0420ADCAA00007FD1D /* WaterWorldPinguinsAndShark.xcdatamodeld */,
 				770AC9FD20ADCAA00007FD1D /* AppDelegate.swift */,
 				770AC9FF20ADCAA00007FD1D /* ViewController.swift */,

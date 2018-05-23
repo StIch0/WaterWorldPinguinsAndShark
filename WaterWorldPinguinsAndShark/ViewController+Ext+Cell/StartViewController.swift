@@ -28,16 +28,14 @@ class StartViewController: UICollectionViewController, UICollectionViewDelegateF
             if #available(iOS 10.0, *) {
                 setUpView()
             } else {
-                // Fallback on earlier versions
             }
         }
         collectionView?.register(StartViewControllerCell.self, forCellWithReuseIdentifier: cellId)
         viewModel = StartViewModel(animalsManager: AnimalsManager())
         activityIndicator.startAnimating()
         viewModel.updateData {
-            self.collectionView?.reloadData()
             self.activityIndicator.stopAnimating()
-            
+            self.collectionView?.reloadData()
         }
         tapOnScreen()
     }
@@ -47,12 +45,17 @@ class StartViewController: UICollectionViewController, UICollectionViewDelegateF
         tap.numberOfTouchesRequired = 1
         view.addGestureRecognizer(tap)
     }
+    //action tap
     @objc func chooseDirectionAndMakeStep (){
         activityIndicator.startAnimating()
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 2.2, execute: {
             self.viewModel.runStep()
             self.collectionView?.reloadData()
             self.activityIndicator.stopAnimating()
+
+//        })
     }
+    //set up collectionView and restartButton in current view
     @available(iOS 9.0, *)
     func setUpView (){
         activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
@@ -75,6 +78,7 @@ class StartViewController: UICollectionViewController, UICollectionViewDelegateF
             ])
 
     }
+    // action restart button
     @objc func restartView(){
         viewModel.updateData {
             self.collectionView?.reloadData()
